@@ -1,0 +1,36 @@
+{
+  "name": "osm-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "npm run build-files && tsc && npm run build-doc",
+    "build-files": "node scripts/buildFiles.js",
+    "build-doc": "typedoc --mode file --out ./docs ./index.ts --excludeExternals --hideGenerator",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semigradsky/osm-api.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Semigradsky/osm-api/issues"
+  },
+  "homepage": "https://github.com/Semigradsky/osm-api#readme",
+  "devDependencies": {
+    "@types/isomorphic-fetch": "0.0.34",
+    "@types/node": "^8.0.46",
+    "json-schema-ref-parser": "^4.0.3",
+    "json-schema-to-typescript": "^4.6.5",
+    "typedoc": "^0.9.0",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "xml2js": "^0.4.19"
+  }
+}

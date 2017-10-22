@@ -1,0 +1,137 @@
+{
+    "title": "Capabilities",
+    "definitions": {
+        "connection-status": {
+            "type": "string",
+            "enum": ["online", "readonly", "offline"]
+        }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "area": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "maximum": {
+                    "description": "The maximum area in square degrees that can be queried by API calls.",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "maximum"
+            ]
+        },
+        "changesets": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "maximumElements": {
+                    "description": "The maximum number of combined nodes, ways and relations that can be contained in a changeset.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "maximumElements"
+            ]
+        },
+        "noteArea": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "maximum": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "maximum"
+            ]
+        },
+        "status": {
+            "additionalProperties": false,
+            "description": "The status element returns either online, readonly or offline for each of the database, API and GPX API.\nThe database field is informational, and the API/GPX-API fields indicate whether a client should expect read and write requests to work (online), only read requests to work (readonly) or no requests to work (offline).",
+            "type": "object",
+            "properties": {
+                "api": {
+                    "$ref": "#/definitions/connection-status"
+                },
+                "database": {
+                    "$ref": "#/definitions/connection-status"
+                },
+                "gpx": {
+                    "$ref": "#/definitions/connection-status"
+                }
+            },
+            "required": [
+                "api",
+                "gpx",
+                "database"
+            ]
+        },
+        "timeout": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "seconds": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "seconds"
+            ]
+        },
+        "tracepoints": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "perPage": {
+                    "description": "The maximum number of points in a single GPS trace. (Possibly incorrect)",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "perPage"
+            ]
+        },
+        "version": {
+            "additionalProperties": false,
+            "description": "The API call versions that the server will accept.",
+            "type": "object",
+            "properties": {
+                "maximum": {
+                    "type": "string"
+                },
+                "minimum": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "maximum",
+                "minimum"
+            ]
+        },
+        "waynodes": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "maximum": {
+                    "description": "The maximum number of nodes that a way may contain.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "maximum"
+            ]
+        }
+    },
+    "required": [
+        "area",
+        "changesets",
+        "noteArea",
+        "status",
+        "timeout",
+        "tracepoints",
+        "version",
+        "waynodes"
+    ]
+}
